@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Riya Patel – Gallery</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="sidebar">
+    <a href="index.html">Home</a>
+    <a href="gallery.html" class="active">Gallery</a>
+    <a href="details.html">Details</a>
+  </div>
+
+  <div class="content">
+    <div class="container">
+      <h2>Photo Gallery</h2>
+      <div class="gallery">
+        <img src="WhatsApp Image 2025-11-07 at 1.46.20 PM.jpeg" alt="Photo 1">
+        <img src="WhatsApp Image 2025-11-07 at 1.46.17 PM.jpeg" alt="Photo 2">
+        <img src="WhatsApp Image 2025-11-07 at 3.19.00 PM.jpeg" alt="Photo 3">
+        <img src="WhatsApp Image 2025-11-07 at 3.19.01 PM (1).jpeg" alt="Photo 4">
+        <img src="WhatsApp Image 2024-08-23 at 12.26.02 PM.jpeg" alt="Photo 5">
+      </div>
+    </div>
+
+    <div id="overlay" onclick="closeOverlay()">
+      <button class="close-btn" onclick="closeOverlay()">×</button>
+      <img id="overlay-img" src="" alt="Full screen image">
+    </div>
+
+    <footer class="footer">© 2025 Riya Patel.</footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('.gallery img').forEach(img => {
+      img.addEventListener('click', function(event) {
+        const src = event.target.src;
+        const overlay = document.getElementById('overlay');
+        const overlayImg = document.getElementById('overlay-img');
+        overlayImg.src = src;
+        overlay.style.display = 'flex';
+      });
+    });
+
+    function closeOverlay() {
+      const overlay = document.getElementById('overlay');
+      overlay.style.display = 'none';
+    }
+  </script>
+</body>
+</html>

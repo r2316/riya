@@ -1,0 +1,230 @@
+:root {
+  --accent: #6b5b95;
+  --accent-hover: #5a4e80;
+  --muted: #6b7280;
+  --paper: #ffffff;
+  --bg: #f6f8fb;
+  --shadow-light: rgba(0,0,0,0.08);
+  --shadow-dark: rgba(0,0,0,0.15);
+  --radius: 12px;
+  --transition: 0.3s ease;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: #111;
+  line-height: 1.6;
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 220px;
+  background: var(--paper);
+  box-shadow: 2px 0 12px var(--shadow-light);
+  padding: 24px 16px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sidebar a {
+  color: #333;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  transition: background var(--transition), color var(--transition);
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  background: var(--accent);
+  color: white;
+}
+
+.content {
+  margin-left: 220px;
+  padding: 32px;
+  flex: 1;
+}
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  background: var(--paper);
+  border-radius: var(--radius);
+  padding: 32px;
+  box-shadow: 0 6px 20px var(--shadow-light);
+}
+
+h1, h2 {
+  color: var(--accent);
+}
+
+h1 {
+  font-size: 2.2rem;
+}
+h2 {
+  font-size: 1.8rem;
+}
+
+.section {
+  margin-top: 40px;
+}
+
+.section h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #0f1724;
+  border-bottom: 2px solid var(--accent);
+  display: inline-block;
+  padding-bottom: 6px;
+  margin-bottom: 16px;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-top: 10px;
+  padding-bottom: 4px;
+}
+
+.label {
+  width: 160px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  text-transform: capitalize;
+}
+
+.value {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.photo {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 6px solid white;
+  box-shadow: 0 8px 20px var(--shadow-light);
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition);
+  box-shadow: 0 4px 12px var(--shadow-light);
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px var(--shadow-dark);
+}
+
+/* Full-screen overlay for gallery */
+#overlay {
+  display: none;
+  position: fixed;
+  top:0;
+  left:0;
+  width:100vw;
+  height:100vh;
+  background-color: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: var(--radius);
+  box-shadow: 0 10px 30px var(--shadow-dark);
+}
+
+#overlay .close-btn {
+  position: absolute;
+  top:20px;
+  right:20px;
+  font-size: 32px;
+  color: white;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  transition: color var(--transition);
+}
+
+#overlay .close-btn:hover {
+  color: var(--accent);
+}
+
+.footer {
+  text-align: center;
+  margin-top: 24px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.btn {
+  background: var(--accent);
+  color: white;
+  padding: 10px 20px;
+  border-radius: var(--radius);
+  border: none;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color var(--transition), transform var(--transition);
+}
+
+.btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 720px) {
+  body {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 8px;
+  }
+  .sidebar a {
+    flex: 1;
+    white-space: nowrap;
+  }
+  .content {
+    margin-left: 0;
+    padding: 16px;
+  }
+}
